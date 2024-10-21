@@ -912,7 +912,7 @@ if __name__ == "__main__":
     # Maximum number of processors for multiprocessing. On 10 processors entire simulation time is several hours
     max_proccessors = 10
     
-    save_dir = './SKA_simulation/VLASS/12_16_10sigma_newvdf/'
+    save_dir = './DSA2000_sim/'
     
     # The source redshifts we are using
     dz = 0.5
