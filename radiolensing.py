@@ -142,10 +142,7 @@ def fit_cosmoDC2(data,num_bins,cosmo):
         params['a'].set(value=0.922, vary=True)
         params['m_star'].set(value=2e14, vary=True)
         params['b'].set(value=0.629, vary=True)
-        if i > 3 or i ==0:
-            fit = model.fit(n[1:], params, mass=binss[1:-1])
-        else:
-            fit = model.fit(n, params, mass=binss[:-1])
+        fit = model.fit(n, params, mass=binss[:-1])
         new_params = fit.params
         fitted_params.append(new_params)
     return fitted_params
@@ -743,7 +740,7 @@ def calc_source_dists(zs):
 ################
     
 
-# NFW magnification bias functions
+# Magnification bias functions
 # Li & Ostriker (2002) Yue et al. (2022) Wyithe et al. (2001)
 
 @njit
@@ -921,17 +918,17 @@ if __name__ == "__main__":
 
     #survey specs
     survey_theta_E_lim = 1.1 * u.arcsec.to(u.radian) # Minimum Einsteiin radius. 1/3 PSF size
-    survey_flux_lim = 0.000010 # Jy
+    survey_flux_lim = 0.000005 # Jy
     single_epoch_flux_lim = 0.000020 # Jy, For transients 
     survey_coverage = 30000 #deg
     
-    # Read in queried cosmoDC2 data, this is all halos where 1e13<(mass halo + mass of member galaxies)<1e15, split into 6 redshift bins
-    z0to05 = pd.read_csv('m13to15z0to0.5.dat')
-    z05to1 = pd.read_csv('m13to15z0.5to1.dat')
-    z1to15 = pd.read_csv('m13to15z1to1.5.dat')
-    z15to2 = pd.read_csv('m13to15z1to1.5.dat')
-    z2to25 = pd.read_csv('m13to15z2to2.5.dat')
-    z25to3 = pd.read_csv('m13to15z2.5to3.dat')
+    # Read in queried cosmoDC2 data, this is all halos where 1e13<(mass halo + mass of member galaxies)<1e16, split into 6 redshift bins
+    z0to05 = pd.read_csv('m13to16z0to0.5.dat')
+    z05to1 = pd.read_csv('m13to16z0.5to1.dat')
+    z1to15 = pd.read_csv('m13to16z1to1.5.dat')
+    z15to2 = pd.read_csv('m13to16z1to1.5.dat')
+    z2to25 = pd.read_csv('m13to16z2to2.5.dat')
+    z25to3 = pd.read_csv('m13to16z2.5to3.dat')
     cosmo_data = [z0to05, z05to1, z1to15, z15to2, z2to25, z25to3]
     
     # Fit CosmoDC2 data and create the mass function grid for interpolation
