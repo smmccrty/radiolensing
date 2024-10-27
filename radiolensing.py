@@ -731,8 +731,8 @@ source_classes = [sfg_class, fsrq_class, bllac_class, ssagn_class, sne_class]
 # Assemble all source dists into dict
 def calc_source_dists(zs):
     results = {source.name: np.array([source.gamma(z) for z in zs]) for source in source_classes}
-    results['agn'] = results['fsrq'] + results['bllac'] + results['ssagn']
     results['total'] = sum(results[key] for key in results if key != 'total')
+    results['agn'] = results['fsrq'] + results['bllac'] + results['ssagn']
     
     save_results_to_json(f'{save_dir}source_dists', source_dists=results)
 
