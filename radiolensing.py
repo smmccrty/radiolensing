@@ -922,13 +922,14 @@ if __name__ == "__main__":
     single_epoch_flux_lim = 0.000020 # Jy, For transients 
     survey_coverage = 30000 #deg
     
-    # Read in queried cosmoDC2 data, this is all halos where 1e13<(mass halo + mass of member galaxies)<1e16, split into 6 redshift bins
-    z0to05 = pd.read_csv('m13to16z0to0.5.dat')
-    z05to1 = pd.read_csv('m13to16z0.5to1.dat')
-    z1to15 = pd.read_csv('m13to16z1to1.5.dat')
-    z15to2 = pd.read_csv('m13to16z1to1.5.dat')
-    z2to25 = pd.read_csv('m13to16z2to2.5.dat')
-    z25to3 = pd.read_csv('m13to16z2.5to3.dat')
+    # Read in queried cosmoDC2 data, this is all halos where 1e13<(mass halo + mass of member galaxies)<1e15, split into 6 redshift bins
+    # Korytov et al. (2019)
+    z0to05 = pd.read_csv('./CosmoDC2Data/m13to16z0to0.5.dat')
+    z05to1 = pd.read_csv('./CosmoDC2Data/m13to16z0.5to1.dat')
+    z1to15 = pd.read_csv('./CosmoDC2Data/'m13to16z1to1.5.dat')
+    z15to2 = pd.read_csv('./CosmoDC2Data/m13to16z1to1.5.dat')
+    z2to25 = pd.read_csv('./CosmoDC2Data/m13to16z2to2.5.dat')
+    z25to3 = pd.read_csv('./CosmoDC2Data/m13to16z2.5to3.dat')
     cosmo_data = [z0to05, z05to1, z1to15, z15to2, z2to25, z25to3]
     
     # Fit CosmoDC2 data and create the mass function grid for interpolation
