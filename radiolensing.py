@@ -142,7 +142,7 @@ def fit_cosmoDC2(data,num_bins,cosmo):
         params['a'].set(value=0.922, vary=True)
         params['m_star'].set(value=2e14, vary=True)
         params['b'].set(value=0.629, vary=True)
-        fit = model.fit(n, params, mass=binss[:-1])
+        fit = model.fit(n[1:], params, mass=binss[1:-1])
         new_params = fit.params
         fitted_params.append(new_params)
     return fitted_params
